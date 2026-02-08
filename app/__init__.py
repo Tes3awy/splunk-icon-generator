@@ -12,7 +12,9 @@ def create_app(config_name="production"):
 
     # Register Blueprints
     from app.core import bp as core_bp
+    from app.error import bp as error_bp
 
     app.register_blueprint(core_bp, url_prefix="/")
+    app.register_blueprint(error_bp)
 
     return app
