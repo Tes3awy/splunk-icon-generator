@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#4ade80" /> <!-- green-400 -->
+            <stop offset="100%" stop-color="#059669" /> <!-- emerald-600 -->
+        </linearGradient>
+    </defs>
+
+    <!-- Background Container -->
+    <rect width="32" height="32" rx="8" fill="url(#grad)" />
+
+    <!-- Icon (simplified mountain/sun) -->
+    <g transform="translate(4, 4) scale(0.75)" stroke="white" stroke-width="2.5" fill="none"
+        stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="26" height="26" rx="4" />
+        <circle cx="9" cy="9" r="2" />
+        <path d="M29 21l-7-7-4 4-6-6-9 9" />
+    </g>
+</svg>

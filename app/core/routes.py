@@ -3,11 +3,16 @@ import re
 import textwrap
 import zipfile
 
-from flask import current_app, flash, render_template, request, send_file
+from flask import current_app, flash, redirect, render_template, request, send_file
 from PIL import Image
 
 from app.core import bp
 from app.core.utils import allowed_file, get_download_count, increment_download_count
+
+
+@bp.route("/favicon.ico")
+def favicon():
+    return redirect("/vercel.svg", code=307)
 
 
 @bp.route("/", methods=["GET", "POST"])
