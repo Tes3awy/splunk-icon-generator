@@ -7,21 +7,24 @@ from flask import current_app, flash, render_template, request, send_file
 from PIL import Image
 
 from app.core import bp
-from app.core.utils import allowed_file
+from app.core.utils import allowed_file, get_download_count, increment_download_count
 
 
 @bp.route("/", methods=["GET", "POST"])
 def index():
+    # Always get current count for display
+    download_count = get_download_count()
+
     if request.method == "POST":
         if "file" not in request.files:
             flash("No file part", "red")
-            return render_template("core/index.j2")
+            return render_template("core/index.j2", download_count=download_count)
 
         file = request.files.get("file")
 
         if file.filename == "":
             flash("No selected file", "red")
-            return render_template("core/index.j2")
+            return render_template("core/index.j2", download_count=download_count)
 
         # Check app name
         app_name = request.form.get("app_name", "splunk_app").strip()
@@ -91,7 +94,10 @@ def index():
 
                     zip_file.writestr("README.txt", instructions)
 
-                # 5. Finalize
+                # 5. Increment Counter
+                increment_download_count()
+
+                # 6. Finalize
                 zip_buffer.seek(0)
 
                 return send_file(
@@ -103,6 +109,6 @@ def index():
 
             except Exception as e:
                 flash(f"Error processing image: {str(e)}", "red")
-                return render_template("core/index.j2")
+                return render_template("core/index.j2", download_count=download_count)
 
-    return render_template("core/index.j2")
+    return render_template("core/index.j2", download_count=download_count)

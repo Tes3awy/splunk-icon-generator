@@ -22,6 +22,7 @@ class Config(object):
         {"name": "appLogo_2x.png", "size": (320, 80), "resize_mode": "fit"},
     ]
     MAX_CONTENT_LENGTH = 5 * 1024 * 1024  # 5 MBs
+    STATS_FILE = "stats.json"
 
 
 class DevelopmentConfig(Config):
