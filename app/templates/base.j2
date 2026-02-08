@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Splunk App Icon Generator</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+        </style>
+    </head>
+
+    <body class="bg-slate-50 min-h-screen flex flex-col items-center justify-center p-4">
+
+        <div class="max-w-xl w-full bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100">
+            <!-- Header -->
+            {% include "includes/_header.j2" %}
+
+            <div class="p-8">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                <div
+                    class="mb-4 p-3 bg-{{ category }}-50 text-{{ category }}-700 text-sm rounded-lg border border-{{ category }}-100">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+                <!-- Content -->
+                {% block content %}{% endblock content %}
+            </div>
+
+            <!-- Footer -->
+            {% include "includes/_footer.j2" %}
+        </div>
+
+        <!-- Scripts -->
+        {% block scripts %}{% endblock scripts %}
+    </body>
+
+</html>
