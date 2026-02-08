@@ -1,5 +1,6 @@
 import io
 import re
+import sys
 import textwrap
 import zipfile
 
@@ -113,6 +114,7 @@ def index():
                 )
 
             except Exception as e:
+                print(f"Error processing image: {str(e)}", file=sys.stderr)
                 flash(f"Error processing image: {str(e)}", "red")
                 return render_template("core/index.j2", download_count=download_count)
 

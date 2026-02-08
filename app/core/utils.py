@@ -18,14 +18,20 @@ def get_download_count():
         with open(current_app.config.get("STATS_FILE"), "rt") as f:
             data = json.load(f)
             return data.get("downloads", 0)
-    except (json.JSONDecodeError, IOError):
+    except (json.JSONDecodeError, IOError, Exception):
+        # If any error occurs reading (permissions, corruption), return 0
         return 0
 
 
 def increment_download_count():
-    """Increments the download count and saves it to the stats file."""
-    count = get_download_count() + 1
+    """Increments the download count safely, ignoring errors on read-only systems."""
+    # 1. Check if we are on Vercel or a read-only environment
+    # Vercel sets the 'VERCEL' environment variable
+    if os.environ.get("VERCEL"):
+        return
+
     try:
+        count = get_download_count() + 1
         with open(current_app.config.get("STATS_FILE"), "wt") as f:
             json.dump({"downloads": count}, f, indent=4)
     except IOError:
