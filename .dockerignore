@@ -9,8 +9,6 @@ pycache
 env
 venv
 .venv
-pip-log.txt
-pip-delete-this-directory.txt
 
 Dockerfile
 .dockerignore
