@@ -69,6 +69,19 @@ docker run -p 8080:8080 splunk-icon-gen
 
 Open your browser to `http://127.0.0.1:8080`.
 
+## Use Case
+
+This tool is designed for **Splunk App developers and administrators** who need to package their apps with professional-looking icons. Creating the specific image files required by Splunk (different dimensions, aspect ratios, filenames) can be tedious and error-prone. 
+
+**This tool solves that problem strictly:**
+
+1.  **Upload** a single high-resolution image (e.g., `512x512` or larger).
+2.  **Generate** a ZIP file containing all mandatory assets:
+    -   **App Icons**: `appIcon.png` (`36x36`), `appIcon_2x.png` (`72x72`), and their Alt variants.
+    -   **Navigation Logos**: `appLogo.png` (`160x40`), `appLogo_2x.png` (`320x80`).
+3.  **Install**: Extract the ZIP directly into your app's `$SPLUNK_HOME/etc/apps/<app_name>/static/` directory.
+
+The tool handles the logic of forcing square dimensions for icons vs preserving aspect ratios for navigation logos, ensuring your app looks polished and meets [Splunkbase certification requirements](https://dev.splunk.com/enterprise/docs/developapps/createapps/#Add-icons-to-your-app).
 
 ## License
 
