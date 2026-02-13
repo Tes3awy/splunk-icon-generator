@@ -23,7 +23,7 @@ def request_entity_too_large(e):
             "error/error.j2",
             error_code=413,
             error_title="File Too Large",
-            error_message="The image you uploaded is too large. Please upload an image smaller than 16MB.",
+            error_message="The image you uploaded is too large. Please upload an image smaller than 5MB.",
         ),
         413,
     )
