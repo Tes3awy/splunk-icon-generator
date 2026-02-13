@@ -1,9 +1,12 @@
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/Tes3awy/splunk-icon-generator)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 
 # Splunk App Icon Generator
 
 A Flask-based web application that automates the creation of icon assets for Splunk Apps. It takes a single high-resolution source image and generates all the required PNG files with the correct filenames and dimensions specified in the [Splunk Developer Guide](https://dev.splunk.com/enterprise/docs/developapps/createapps/).
+
+![Splunk App Icon Generator](assets/page.jpeg)
 
 ## Features
 
@@ -45,7 +48,7 @@ $ pip install -r requirements.txt
 4. Run the application
 
 ```bash
-$ flask run # Or python app.py
+$ flask run
 ```
 
 ### Docker Usage
